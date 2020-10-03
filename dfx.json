@@ -1,0 +1,24 @@
+{
+    "canisters": {
+        "controller": {
+            "type": "custom",
+            "candid": "canisters/controller/src/controller.did",
+            "wasm": "target/wasm32-unknown-unknown/debug/controller.wasm",
+            "build": "cargo build --target wasm32-unknown-unknown --package controller"
+        }
+    },
+    "dfx": "0.6.10",
+    "networks": {
+        "local": {
+            "bind": "127.0.0.1:8000",
+            "type": "ephemeral"
+        },
+        "tungsten": {
+            "providers": [
+                "https://gw.dfinity.network"
+            ],
+            "type": "persistent"
+        }
+    },
+    "version": 1
+}

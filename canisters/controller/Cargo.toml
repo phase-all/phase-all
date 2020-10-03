@@ -1,0 +1,13 @@
+[package]
+name = "controller"
+version = "0.0.0"
+authors = ["Jordan Last <jordan.michael.last@gmail.com>"]
+edition = "2018"
+
+[lib]
+path = "src/controller.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+ic-cdk = "=0.1.0"
+ic-cdk-macros = "=0.1.0"

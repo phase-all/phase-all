@@ -1,0 +1,21 @@
+{
+  "name": "phase-all",
+  "version": "0.0.0",
+  "description": "A fair protocol for the collection and dissemination of clinical research data",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phase-all/phase-all.git"
+  },
+  "keywords": [],
+  "contributors": [
+    "Jordan Last <jordan.michael.last@gmail.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phase-all/phase-all/issues"
+  },
+  "homepage": "https://github.com/phase-all/phase-all#readme"
+}
