@@ -1,4 +1,4 @@
-import './elements/pa-app.js';
+import './elements/pa-app.ts';
 
 document.write(`
     <!DOCTYPE html>
