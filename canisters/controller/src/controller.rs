@@ -66,6 +66,17 @@ fn get_entity(id: String) -> Entity {
     }
 }
 
+// TODO we will need some way of paginating these results
+// TODO seems the GraphQL thing would be great to have here
+#[query]
+fn get_entities() -> Vec<Entity> {
+    let entity_store = storage::get::<EntityStore>();
+
+    let entities: Vec<Entity> = entity_store.iter().map(|(_, entity)| entity.clone()).collect();
+
+    return entities;
+}
+
 #[query]
 fn hello_world() -> String {
     print("Hello world!");

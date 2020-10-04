@@ -11,4 +11,5 @@ service : {
     "store_animal": (text, int32) -> ();
     "create_entity": (text, text) -> (bool);
     "get_entity": (text) -> (Entity) query;
+    "get_entities": () -> (vec Entity) query;
 }
