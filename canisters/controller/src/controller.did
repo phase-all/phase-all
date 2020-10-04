@@ -1,5 +1,14 @@
+type Entity = record {
+    "id": text;
+    "name": text;
+    "description": text;
+    "endorsements": vec Entity;
+}
+
 service : {
     "hello_world": () -> (text) query;
     "get_animal": (text) -> (text) query;
     "store_animal": (text, int32) -> ();
+    "create_entity": (text, text) -> (bool);
+    "get_entity": (text) -> (Entity) query;
 }

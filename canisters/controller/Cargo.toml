@@ -11,3 +11,4 @@ crate-type = ["cdylib"]
 [dependencies]
 ic-cdk = "=0.1.0"
 ic-cdk-macros = "=0.1.0"
+candid = "=0.6.7"

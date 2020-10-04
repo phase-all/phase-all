@@ -5,9 +5,27 @@
             "candid": "canisters/controller/src/controller.did",
             "wasm": "target/wasm32-unknown-unknown/debug/controller.wasm",
             "build": "cargo build --target wasm32-unknown-unknown --package controller"
+        },
+        "frontend": {
+            "type": "assets",
+            "dependencies": [
+                "controller"
+            ],
+            "frontend": {
+                "entrypoint": "canisters/frontend/index.js"
+            },
+            "source": [
+                "dist/frontend/"
+              ]        
         }
     },
     "dfx": "0.6.10",
+    "defaults": {
+        "build": {
+          "packtool": ""
+        }
+      },
+    
     "networks": {
         "local": {
             "bind": "127.0.0.1:8000",
