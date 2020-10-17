@@ -1,15 +1,5 @@
 import './elements/pa-app.ts';
 
-document.write(`
-    <!DOCTYPE html>
+const paAPP = document.createElement('pa-app');
 
-    <html>
-        <head>
-            <title>Phase All</title>
-        </head>
-
-        <body>
-            <pa-app></pa-app>
-        </body>
-    </html>
-`);
+document.body.appendChild(paAPP);
