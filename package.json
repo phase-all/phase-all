@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "description": "A fair protocol for the collection and dissemination of clinical research data",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "deploy-local": "dfx deploy",
+    "deploy-remote": "dfx deploy --network ic",
+    "upgrade-local": "dfx canister install --all --mode upgrade",
+    "upgrade-remote": "dfx canister --network ic install --all --mode upgrade"
   },
   "repository": {
     "type": "git",

@@ -14,11 +14,13 @@ import './pa-tabs.ts';
 type State = {
     readonly entities: ReadonlyArray<Entity>;
     readonly loading: boolean;
+    readonly registering: boolean;
 };
 
 const InitialState: Readonly<State> = {
     entities: [],
-    loading: true
+    loading: true,
+    registering: false
 };
 
 class PAEntities extends HTMLElement {
@@ -36,17 +38,24 @@ class PAEntities extends HTMLElement {
     }
 
     async registerEntity() {
+        this.store.registering = true;
+
         const entityNameInput: Readonly<HTMLInputElement> | null = this.querySelector(`#pa-app-entity-name`);
         const entityDescriptionInput: Readonly<HTMLInputElement> | null = this.querySelector(`#pa-app-entity-description`);
     
         const entityName: string | undefined = entityNameInput?.value;
         const entityDescription: string | undefined = entityDescriptionInput?.value;
 
+        console.log('entityName', entityName);
+        console.log('entityDescription', entityDescription);
+
         await controller.create_entity(entityName, entityDescription);
 
         alert('Entity created');
 
         await this.getAndSetEntities();
+
+        this.store.registering = false;
     }
 
     render(state: Readonly<State>) {
@@ -68,7 +77,8 @@ class PAEntities extends HTMLElement {
                 }
 
                 .pa-entities-entity-container {
-                    border: solid 2px black;
+                    border-radius: 5px;
+                    border: solid 2px lightgrey;
                     padding: 25px;
                     width: 100%;
                     height: 100%;
@@ -115,7 +125,8 @@ class PAEntities extends HTMLElement {
                                         <textarea id="pa-app-entity-description"></textarea>
                                     </div>
 
-                                    <button @click=${() => this.registerEntity()}>Register</button>
+                                    <div ?hidden=${!state.registering}>Registering...</div>
+                                    <button ?hidden=${state.registering} @click=${() => this.registerEntity()}>Register</button>
                                 </div>
                             `
                         }

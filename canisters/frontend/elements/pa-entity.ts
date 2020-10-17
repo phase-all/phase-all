@@ -27,7 +27,37 @@ class PAEntity extends HTMLElement {
                 }
 
                 .pa-entity-entity-container {
+                    width: 100%;
+                    height: 100%;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                }
 
+                .pa-entity-name {
+                    font-weight: bold;
+                    font-size: 25px;
+                    font-family: sans-serif;
+                }
+
+                .pa-entity-description {
+                    font-size: 15px;
+                    padding: 25px;
+                    font-family: sans-serif;
+                }
+
+                .pa-entity-endorsements {
+                }
+
+                .pa-entity-endorsements-title {
+                    font-size: 20px;
+                    font-weight: bold;
+                    font-family: sans-serif;
+                }
+
+                .pa-entity-endorsement {
+                    padding: 25px;
+                    font-size: 15px;
+                    font-family: sans-serif;
                 }
             </style>
 
@@ -35,13 +65,15 @@ class PAEntity extends HTMLElement {
                 ${state.entity === 'NOT_SET' ? html`<div>Loading...</div>` : ''}
                 ${state.entity !== 'NOT_SET' ? html`
                     <div class="pa-entity-entity-container">
-                        <div>Name: ${state.entity.name}</div>
-                        <div>Description: ${state.entity.description}</div>
+                        <div class="pa-entity-name">${state.entity.name}</div>
+                        
+                        <div class="pa-entity-description">${state.entity.description}</div>
 
-                        <div>
-                            Endorsements: ${state.entity.endorsements.map((endorsement: Readonly<Entity>) => {
+                        <div class="pa-entity-endorsements">
+                            <div class="pa-entity-endorsements-title">Endorsements</div>
+                            ${state.entity.endorsements.length === 0 ? html`<div class="pa-entity-endorsement">None</div>` : state.entity.endorsements.map((endorsement: Readonly<Entity>) => {
                                 return html`
-                                    <div>${endorsement.name}</div>
+                                    <div class="pa-entity-endorsement">${endorsement.name}</div>
                                 `;
                             })}
                         </div>

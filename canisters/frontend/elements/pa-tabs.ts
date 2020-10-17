@@ -16,6 +16,20 @@ const InitialState: Readonly<State> = {
 class PATabs extends HTMLElement {
     readonly store = createObjectStore(InitialState, (state: Readonly<State>) => litRender(this.render(state), this), this);
 
+    set tabs(tabs: ReadonlyArray<Tab>) {
+        if (this.store.tabs.length === 0) {
+            this.store.tabs = tabs;
+        }
+        else {
+            this.store.tabs = tabs.map((tab: Readonly<Tab>, index: number) => {
+                return {
+                    ...tab,
+                    active: this.store.tabs[index].active
+                };
+            });
+        }
+    }
+
     titleClicked(title: string) {
         this.store.tabs = this.store.tabs.map((tab: Readonly<Tab>) => {
             if (tab.title === title) {
